@@ -1,3 +1,3 @@
 // Export pages
-export 'home_page/home_page_widget.dart' show HomePageWidget;
-export 'loggedin_page/loggedin_page_widget.dart' show LoggedinPageWidget;
+export 'main_contents/main_contents_widget.dart' show MainContentsWidget;
+export 'more_contents/more_contents_widget.dart' show MoreContentsWidget;

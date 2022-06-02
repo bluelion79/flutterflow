@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "770205244876",
+    "project_id": "flutterflowloginfirebase",
+    "storage_bucket": "flutterflowloginfirebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:770205244876:android:cae7b8ce9ae06db8825169",
+        "android_client_info": {
+          "package_name": "com.mycompany.login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "770205244876-ebtt93769jko9i3i22sq0v4i3n14imvt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjjt7t1iX0WXYoN5KS2VTUn1yb1cx6CT0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "770205244876-ebtt93769jko9i3i22sq0v4i3n14imvt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "770205244876-h83idarb9007bb7ges1jq24uhfapitgb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.login"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

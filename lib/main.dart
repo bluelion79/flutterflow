@@ -1,6 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'auth/firebase_user_provider.dart';
+
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
@@ -9,7 +12,7 @@ import 'index.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await Firebase.initializeApp();
   await FlutterFlowTheme.initialize();
 
   runApp(MyApp());
@@ -27,6 +30,21 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Locale _locale;
   ThemeMode _themeMode = FlutterFlowTheme.themeMode;
+
+  Stream<LoginFirebaseUser> userStream;
+  LoginFirebaseUser initialUser;
+  bool displaySplashImage = true;
+
+  @override
+  void initState() {
+    super.initState();
+    userStream = loginFirebaseUserStream()
+      ..listen((user) => initialUser ?? setState(() => initialUser = user));
+    Future.delayed(
+      Duration(seconds: 1),
+      () => setState(() => displaySplashImage = false),
+    );
+  }
 
   void setLocale(Locale value) => setState(() => _locale = value);
   void setThemeMode(ThemeMode mode) => setState(() {
@@ -49,7 +67,19 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(brightness: Brightness.light),
       darkTheme: ThemeData(brightness: Brightness.dark),
       themeMode: _themeMode,
-      home: NavBarPage(),
+      home: initialUser == null || displaySplashImage
+          ? Center(
+              child: SizedBox(
+                width: 50,
+                height: 50,
+                child: CircularProgressIndicator(
+                  color: FlutterFlowTheme.of(context).primaryColor,
+                ),
+              ),
+            )
+          : currentUser.loggedIn
+              ? NavBarPage()
+              : MoreContentsWidget(),
     );
   }
 }
@@ -65,7 +95,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPage = 'HomePage';
+  String _currentPage = 'MainContents';
 
   @override
   void initState() {
@@ -76,8 +106,8 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'HomePage': HomePageWidget(),
-      'loggedinPage': LoggedinPageWidget(),
+      'MainContents': MainContentsWidget(),
+      'MoreContents': MoreContentsWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPage);
     return Scaffold(
