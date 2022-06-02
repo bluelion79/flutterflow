@@ -38,7 +38,12 @@ class _LoggedinPageWidgetState extends State<LoggedinPageWidget> {
           onTap: () => FocusScope.of(context).unfocus(),
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            children: [],
+            children: [
+              Text(
+                'Hello World',
+                style: FlutterFlowTheme.of(context).bodyText1,
+              ),
+            ],
           ),
         ),
       ),
