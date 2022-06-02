@@ -3,14 +3,14 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({Key key}) : super(key: key);
+class LoggedinPageWidget extends StatefulWidget {
+  const LoggedinPageWidget({Key key}) : super(key: key);
 
   @override
-  _HomePageWidgetState createState() => _HomePageWidgetState();
+  _LoggedinPageWidgetState createState() => _LoggedinPageWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget> {
+class _LoggedinPageWidgetState extends State<LoggedinPageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -21,7 +21,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          'Home Page',
+          'Logged in Page',
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: Colors.white,
